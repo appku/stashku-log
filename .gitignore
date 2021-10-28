@@ -15,6 +15,7 @@ rollup.*
 .dbeaver-data-sources.xml
 coverage/
 *.code-workspace
+.husky/
 
 #IIS/IISNode
 iisnode
