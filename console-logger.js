@@ -22,7 +22,7 @@ export default class ConsoleLogger {
          */
         this.config = Object.assign({
             enabled: true,
-            severity: null,
+            severity: 'error',
             colors: true,
             timestamp: true,
             local: true
