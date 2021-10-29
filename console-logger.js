@@ -21,7 +21,7 @@ export default class ConsoleLogger {
          * @type {ConsoleLoggerConfiguration}
          */
         this.config = Object.assign({
-            enabled: false,
+            enabled: true,
             severity: null,
             colors: true,
             timestamp: true,

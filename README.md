@@ -6,7 +6,7 @@ StashKu Log can also be used independently, without StashKu to simply log in a s
 level logging (no `console.log` generalities). 
 
 This package supports 2 modes of logging, each can be enabled/disabled and configured independently of one another:
-- `"console"`: Outputs logs to `stdout` (usually to the terminal).
+- `"console"`: Outputs logs to `stdout` (usually to the terminal). This logger is enabled by default.
 - `"file"`: Writes logs to a log file on a file-system.
 
 ## Usage
@@ -59,7 +59,7 @@ Alternatively, if not loaded by configuration of the StashKu `middleware` proper
 StashKu's `use` middleware function:
 ```js
 import log from '@appku/stashku-log';
-sku.use(log);
+myStashKuInst.use(log);
 ...
 ```
 
