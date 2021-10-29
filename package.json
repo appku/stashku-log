@@ -45,7 +45,6 @@
     },
     "devDependencies": {
         "@types/jest": "^27.0.2",
-        "dotenv": "^10.0.0",
         "eslint": "^8.1.0",
         "eslint-plugin-jest": "^25.2.2",
         "husky": "^7.0.4",
