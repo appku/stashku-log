@@ -1,6 +1,6 @@
 {
     "name": "@appku/stashku-log",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "description": "A StashKu middleware for outputing log messages to console or to a flat file.",
     "repository": {
         "type": "git",
