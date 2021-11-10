@@ -40,7 +40,7 @@
         }
     },
     "dependencies": {
-        "@appku/stashku": "^0.4.2",
+        "@appku/stashku": "^0.4.3",
         "chalk": "^4.1.2"
     },
     "devDependencies": {
