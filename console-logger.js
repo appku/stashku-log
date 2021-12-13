@@ -17,33 +17,49 @@ import LogUtility from './log-utility.js';
 export default class ConsoleLogger {
     constructor(config) {
 
-        /**
-         * @type {ConsoleLoggerConfiguration}
-         */
-        this.config = Object.assign({
-            enabled: true,
-            severity: 'error',
-            colors: true,
-            timestamp: true,
-            local: true
-        }, config);
+        
+        Object.defineProperty(this, '_storedConfig', {
+            value: {
+                enabled: true,
+                severity: 'error',
+                colors: true,
+                timestamp: true,
+                local: true
+            },
+            writable: true,
+            enumerable: false
+        })
+        this.config = config;
+    }
 
-        //init
+    /**
+     * @type {ConsoleLoggerConfiguration}
+     */
+    get config() {
+        let effective = {};
         if (typeof process.env.STASHKU_LOG_CONSOLE_ENABLED !== 'undefined') {
-            this.config.enabled = !!process.env.STASHKU_LOG_CONSOLE_ENABLED;
+            effective.enabled = !!process.env.STASHKU_LOG_CONSOLE_ENABLED;
         }
         if (typeof process.env.STASHKU_LOG_CONSOLE_SEVERITY !== 'undefined') {
-            this.config.severity = process.env.STASHKU_LOG_CONSOLE_SEVERITY;
+            effective.severity = process.env.STASHKU_LOG_CONSOLE_SEVERITY;
         }
         if (typeof process.env.STASHKU_LOG_CONSOLE_TIMESTAMP !== 'undefined') {
-            this.config.timestamp = !!process.env.STASHKU_LOG_CONSOLE_TIMESTAMP;
+            effective.timestamp = !!process.env.STASHKU_LOG_CONSOLE_TIMESTAMP;
         }
         if (typeof process.env.STASHKU_LOG_CONSOLE_LOCAL !== 'undefined') {
-            this.config.local = !!process.env.STASHKU_LOG_CONSOLE_LOCAL;
+            effective.local = !!process.env.STASHKU_LOG_CONSOLE_LOCAL;
         }
         if (typeof process.env.STASHKU_LOG_CONSOLE_COLORS !== 'undefined') {
-            this.config.colors = !!process.env.STASHKU_LOG_CONSOLE_COLORS;
+            effective.colors = !!process.env.STASHKU_LOG_CONSOLE_COLORS;
         }
+        return Object.assign(this._storedConfig, effective);
+    }
+
+    /**
+     * @param {ConsoleLoggerConfiguration} obj
+     */
+    set config(obj) {
+        this._storedConfig = Object.assign(this._storedConfig, obj);
     }
 
     async write(severity, ...args) {
