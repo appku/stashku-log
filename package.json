@@ -28,12 +28,19 @@
     },
     "jest": {
         "testEnvironment": "node",
+        "coveragePathIgnorePatterns": [
+            "/node_modules/",
+            "/test/",
+            "/docs/"
+        ],
         "testPathIgnorePatterns": [
-            "/node_modules/"
+            "/node_modules/",
+            "/test/",
+            "/docs/"
         ]
     },
     "dependencies": {
-        "@appku/stashku": "^0.5.3",
+        "@appku/stashku": "^0.5.8",
         "chalk": "^4.1.2"
     },
     "devDependencies": {
