@@ -1,0 +1,6 @@
+docs/**/*
+tutorials/**/*
+test/**/*
+coverage/**/*
+demo/**/*
+.vscode/**/*
