@@ -7,37 +7,19 @@ level logging (no `console.log` generalities).
 
 This package supports 2 modes of logging, each can be enabled/disabled and configured independently of one another:
 - `"console"`: Outputs logs to `stdout` (usually to the terminal). This logger is enabled by default.
-- `"file"`: Writes logs to a log file on a file-system.
+- `"file"`: Writes logs to a log file on a file-system. *Currently under development.*
 
-## Usage
-To utilize with `stashku`, follow the Configuration section below. You should utilize your StashKu instance's `log`
-property to make logs function calls. In the absence of StashKu, you can make log calls directly with this library:
-
-### Within StashKu
-```js
-let stash = new StashKu( ... ); ///see Configuration section below
-stash.log.debug('Look ma! I am debugging.');
-stash.log.info('Look ma! I am pretty.');
-stash.log.warn('Look ma! I am smoking.');
-stash.log.error('Look ma! I am on fire.');
+## Getting Started
+```sh
+npm i --save @appku/stashku-log
 ```
 
-### Without StashKu
+To utilize this middleware with `stashku`, this middleware can be passed to StashKu through the configuration to provide functionality. 
+
 ```js
 import log from '@appku/stashku-log';
-log.debug('Look ma! I am debugging.');
-log.info('Look ma! I am pretty.');
-log.warn('Look ma! I am smoking.');
-log.error('Look ma! I am on fire.');
-```
-
-## Configuration
-This middleware can be passed to StashKu through the configuration to provide functionality. You can find a
-demonstration in the `demo/` directory in this repository.
-
-```js
-let sku = new StashKu({
-    middleware: ['@appku/stashku-log'],
+let stash = new StashKu({
+    middleware: [log],
     '@appku/stashku-log': {
         console: {
             enabled: true,
@@ -54,7 +36,28 @@ let sku = new StashKu({
 });
 ```
 
-### Loading After StashKu Initialization
+### Code Quick-Start
+You should utilize your StashKu instance's `log` property to make logs function calls. In the absence of StashKu, you can make log calls directly with this library:
+
+#### Within StashKu
+```js
+let stash = new StashKu( ... ); ///see Configuration section below
+stash.log.debug('Look ma! I am debugging.');
+stash.log.info('Look ma! I am pretty.');
+stash.log.warn('Look ma! I am smoking.');
+stash.log.error('Look ma! I am on fire.');
+```
+
+#### Without StashKu
+```js
+import log from '@appku/stashku-log';
+log.debug('Look ma! I am debugging.');
+log.info('Look ma! I am pretty.');
+log.warn('Look ma! I am smoking.');
+log.error('Look ma! I am on fire.');
+```
+
+#### Loading After StashKu Initialization
 Alternatively, if not loaded by configuration of the StashKu `middleware` property (as shown above), you can use 
 StashKu's `use` middleware function:
 ```js
@@ -63,7 +66,7 @@ myStashKuInst.use(log);
 ...
 ```
 
-### Without StashKu
+#### Without StashKu
 If you are using the stashku-log without StashKu, you can still configure the module, as shown below:
 ```js
 import log from '@appku/stashku-log';
@@ -75,14 +78,17 @@ log.config = {
 ...
 ```
 
-To configure the library *without* StashKu, set the `config` property on the module.
+To configure the library *without* StashKu, set the `config` property on the module or use environmental variables.
+
+## Documentation
+Formal documentation is [available here](https://github.com/appku/stashku-log). 
 
 ### Available Configuration Properties
 | Property | ENV | Type | Default |
 |-|-|-|-|
 | console |  | `Object` |  |
 | ↳ console.enabled | STASHKU_LOG_CONSOLE_ENABLED | `Boolean` | `true` |
-| ↳ console.severity | STASHKU_LOG_CONSOLE_SEVERITY | `String` | `null` |
+| ↳ console.severity | STASHKU_LOG_CONSOLE_SEVERITY | `String` | |
 | ↳ console.timestamp | STASHKU_LOG_CONSOLE_TIMESTAMP | `Boolean` | `true` |
 | ↳ console.local | STASHKU_LOG_CONSOLE_LOCAL | `Boolean` | `true` |
 | ↳ console.colors | STASHKU_LOG_CONSOLE_COLORS | `Boolean` | `true` |

@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>@AppKu/StashKu-Log: LogMiddleware</title>
+    
+    
+      <link type="text/css" rel="stylesheet" href="styles/vendor/prism-tomorrow-night.css">
+    
+    <link type="image/x-icon" rel="icon" href="favicon.ico">
+    <link type="image/x-icon" rel="shortcut icon" href="favicon.ico">
+    <link type="text/css" rel="stylesheet" href="styles/styles.css">
+    
+</head>
+<body>
+
+<header class="layout-header">
+  
+    <a href="./">
+      <img
+        src="https://avatars.githubusercontent.com/u/76977527?s=400"
+        alt="@AppKu/StashKu-Log"
+      >
+    </a>
+  
+  <h1><a href="./index.html">@AppKu/StashKu-Log</a></h1>
+  
+  <h2>v0.3.1</h2>
+  
+  
+  <ul class="meta-links">
+    
+    <li><a href="https://appku.com"><i class="bi bi-globe"></i></a></li>
+    
+    <li><a href="https://github.com/appku/stashku-log"><i class="bi bi-github"></i></a></li>
+    
+  </ul>
+  
+  <nav class="layout-nav">
+    <ul class="nav-introduction">
+      <li class="nav-item"><a href="./index.html">Introduction</a></li>
+    </ul>
+    <ul><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="ConsoleLogger.html">ConsoleLogger</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="ConsoleLogger.html#config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="ConsoleLogger.html#config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#debug">debug</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#info">info</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#warn">warn</a></span></li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="LogMiddleware.html">LogMiddleware</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.loggers">loggers</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.name">name</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.states">states</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.callback">callback</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.debug">debug</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.info">info</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.warn">warn</a></span></li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="LogUtility.html">LogUtility</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogUtility.html#.severity">severity</a></span></li></ul><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#ConsoleLoggerConfiguration">ConsoleLoggerConfiguration</a></span></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#LogMiddlewareConfiguration">LogMiddlewareConfiguration</a></span></li>
+  </nav>
+</header>
+
+
+<main class="layout-main ">
+  <div class="container">
+    <p class="page-kind">Class</p>
+    <h1 class="page-title">LogMiddleware</h1>
+    
+
+
+
+
+<section>
+
+
+<header class="class">
+
+
+    
+        
+        <!-- <h2>LogMiddleware</h2> -->
+
+        
+
+        
+
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+
+
+
+    
+        
+
+
+
+
+
+    
+
+
+    
+
+    <div class="method-type">
+    
+    </div>
+
+    <h4 class="method-name" id="LogMiddleware">new LogMiddleware<span class="signature">()</span><span class="return-type-signature"></span>
+    </h4>
+
+
+
+
+
+<div class="method-description">
+    
+    <p>Middlware that provides logging capabilities.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Source</h4>
+    <ul>
+        <li class="method-source">
+            <a href="log-middleware.js.html">log-middleware.js</a><a href="log-middleware.js.html#source.12">, line 12</a>
+        </li>
+    </ul>
+
+
+
+    
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+
+
+    
+        <h3 class="subtitle">Members</h3>
+
+        
+            
+
+<article class="member">
+    <div class="method-type">
+        <span class="method-type-signature is-static">static</span>
+    </div>
+<h4 class="member-name" id=".config">config<span class="type-signature"><a href="global.html#LogMiddlewareConfiguration">LogMiddlewareConfiguration</a></span></h4>
+
+
+
+
+
+
+    <h4>Type</h4>
+    <ul>
+        <li>
+            
+
+
+    <span class="param-type">
+        <code><a href="global.html#LogMiddlewareConfiguration">LogMiddlewareConfiguration</a></code>
+    </span>
+    
+
+        </li>
+    </ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    <h4>Source</h4>
+    <ul>
+        <li class="method-source">
+            <a href="log-middleware.js.html">log-middleware.js</a><a href="log-middleware.js.html#source.31">, line 31</a>
+        </li>
+    </ul>
+
+
+</article>
+        
+            
+
+<article class="member">
+    <div class="method-type">
+        <span class="method-type-signature is-static">static</span>
+    </div>
+<h4 class="member-name" id=".loggers">loggers<span class="type-signature">Array</span></h4>
+
+
+
+
+
+
+    <h4>Type</h4>
+    <ul>
+        <li>
+            
+
+
+    <span class="param-type">
+        <code>Array</code>
+    </span>
+    
+
+        </li>
+    </ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    <h4>Source</h4>
+    <ul>
+        <li class="method-source">
+            <a href="log-middleware.js.html">log-middleware.js</a><a href="log-middleware.js.html#source.36">, line 36</a>
+        </li>
+    </ul>
+
+
+</article>
+        
+            
+
+<article class="member">
+    <div class="method-type">
+        <span class="method-type-signature is-static">static</span>
+    </div>
+<h4 class="member-name" id=".name">name<span class="type-signature">String</span></h4>
+
+
+
+
+
+
+    <h4>Type</h4>
+    <ul>
+        <li>
+            
+
+
+    <span class="param-type">
+        <code>String</code>
+    </span>
+    
+
+        </li>
+    </ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    <h4>Source</h4>
+    <ul>
+        <li class="method-source">
+            <a href="log-middleware.js.html">log-middleware.js</a><a href="log-middleware.js.html#source.20">, line 20</a>
+        </li>
+    </ul>
+
+
+</article>
+        
+            
+
+<article class="member">
+    <div class="method-type">
+        <span class="method-type-signature is-static">static</span><span class="method-type-signature is-readonly">readonly</span>
+    </div>
+<h4 class="member-name" id=".states">states<span class="type-signature">Array</span></h4>
+
+
+
+
+
+
+    <h4>Type</h4>
+    <ul>
+        <li>
+            
+
+
+    <span class="param-type">
+        <code>Array</code>
+    </span>
+    
+
+        </li>
+    </ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    <h4>Source</h4>
+    <ul>
+        <li class="method-source">
+            <a href="log-middleware.js.html">log-middleware.js</a><a href="log-middleware.js.html#source.26">, line 26</a>
+        </li>
+    </ul>
+
+
+</article>
+        
+    
+
+    
+        <h3 class="subtitle">Methods</h3>
+
+        
+            
+
+
+    <article class="method">
+
+
+
+
+    
+
+
+    
+
+    <div class="method-type">
+    <span class="method-type-signature is-static">static</span>
+    </div>
+
+    <h4 class="method-name" id=".callback">callback<span class="signature">(stashKu, engine, severity, args)</span><span class="return-type-signature"></span>
+    </h4>
+
+
+
+
+
+<div class="method-description">
+    
+    <p>The middleware callback handler that is called from StashKu.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Parameters</h4>
+    
+
+<ul class="method-params">
+    
+
+        <li>
+            
+                <span class="param-name">stashKu</span>
+            
+
+            
+                
+
+
+    <span class="param-type">
+        <code>StashKu</code>
+    </span>
+    
+
+            
+
+            
+
+            
+
+            <div class="param-description"><p>The <code>StashKu</code> instance making the call.</p></div>
+            
+        </li>
+
+    
+
+        <li>
+            
+                <span class="param-name">engine</span>
+            
+
+            
+                
+
+
+    <span class="param-type">
+        <code>BaseEngine</code>
+    </span>
+    
+
+            
+
+            
+
+            
+
+            <div class="param-description"><p>The currently active storage engine.</p></div>
+            
+        </li>
+
+    
+
+        <li>
+            
+                <span class="param-name">severity</span>
+            
+
+            
+                
+
+
+    <span class="param-type">
+        <code>String</code>
+    </span>
+    
+
+            
+
+            
+
+            
+
+            <div class="param-description"><p>The severity of the log call, either &quot;debug&quot;, &quot;info&quot;, &quot;warn&quot;, or &quot;error&quot;.</p></div>
+            
+        </li>
+
+    
+
+        <li>
+            
+                <span class="param-name">args</span>
+            
+
+            
+                
+
+
+    <span class="param-type">
+        <code>Array</code>
+    </span>
+    
+
+            
+
+            
+
+            
+
+            <div class="param-description"><p>The arguments containing information to log.</p></div>
+            
+        </li>
+
+    
+</ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Source</h4>
+    <ul>
+        <li class="method-source">
+            <a href="log-middleware.js.html">log-middleware.js</a><a href="log-middleware.js.html#source.61">, line 61</a>
+        </li>
+    </ul>
+
+
+
+    </article>
+
+        
+            
+
+
+    <article class="method">
+
+
+
+
+    
+
+
+    
+
+    <div class="method-type">
+    <span class="method-type-signature is-static">static</span>
+    </div>
+
+    <h4 class="method-name" id=".debug">debug<span class="signature">(&hellip;args)</span><span class="return-type-signature"></span>
+    </h4>
+
+
+
+
+
+<div class="method-description">
+    
+    <p>Writes a &quot;debug&quot; severity log message.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Parameters</h4>
+    
+
+<ul class="method-params">
+    
+
+        <li>
+            
+                <span class="param-name">args</span>
+            
+
+            
+                
+
+
+    <span class="param-type">
+        <code>any</code>
+    </span>
+    
+
+            
+
+            
+                <span class="param-attributes">
+                
+
+                
+
+                
+                    &lt;repeatable&gt;<br>
+                
+                </span>
+            
+
+            
+
+            <div class="param-description"><p>The arguments with information to be logged.</p></div>
+            
+        </li>
+
+    
+</ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Source</h4>
+    <ul>
+        <li class="method-source">
+            <a href="log-middleware.js.html">log-middleware.js</a><a href="log-middleware.js.html#source.80">, line 80</a>
+        </li>
+    </ul>
+
+
+
+    </article>
+
+        
+            
+
+
+    <article class="method">
+
+
+
+
+    
+
+
+    
+
+    <div class="method-type">
+    <span class="method-type-signature is-static">static</span>
+    </div>
+
+    <h4 class="method-name" id=".error">error<span class="signature">(&hellip;args)</span><span class="return-type-signature"></span>
+    </h4>
+
+
+
+
+
+<div class="method-description">
+    
+    <p>Writes a &quot;error&quot; severity log message.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Parameters</h4>
+    
+
+<ul class="method-params">
+    
+
+        <li>
+            
+                <span class="param-name">args</span>
+            
+
+            
+                
+
+
+    <span class="param-type">
+        <code>any</code>
+    </span>
+    
+
+            
+
+            
+                <span class="param-attributes">
+                
+
+                
+
+                
+                    &lt;repeatable&gt;<br>
+                
+                </span>
+            
+
+            
+
+            <div class="param-description"><p>The arguments with information to be logged.</p></div>
+            
+        </li>
+
+    
+</ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Source</h4>
+    <ul>
+        <li class="method-source">
+            <a href="log-middleware.js.html">log-middleware.js</a><a href="log-middleware.js.html#source.113">, line 113</a>
+        </li>
+    </ul>
+
+
+
+    </article>
+
+        
+            
+
+
+    <article class="method">
+
+
+
+
+    
+
+
+    
+
+    <div class="method-type">
+    <span class="method-type-signature is-static">static</span>
+    </div>
+
+    <h4 class="method-name" id=".info">info<span class="signature">(&hellip;args)</span><span class="return-type-signature"></span>
+    </h4>
+
+
+
+
+
+<div class="method-description">
+    
+    <p>Writes a &quot;info&quot; severity log message.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Parameters</h4>
+    
+
+<ul class="method-params">
+    
+
+        <li>
+            
+                <span class="param-name">args</span>
+            
+
+            
+                
+
+
+    <span class="param-type">
+        <code>any</code>
+    </span>
+    
+
+            
+
+            
+                <span class="param-attributes">
+                
+
+                
+
+                
+                    &lt;repeatable&gt;<br>
+                
+                </span>
+            
+
+            
+
+            <div class="param-description"><p>The arguments with information to be logged.</p></div>
+            
+        </li>
+
+    
+</ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Source</h4>
+    <ul>
+        <li class="method-source">
+            <a href="log-middleware.js.html">log-middleware.js</a><a href="log-middleware.js.html#source.91">, line 91</a>
+        </li>
+    </ul>
+
+
+
+    </article>
+
+        
+            
+
+
+    <article class="method">
+
+
+
+
+    
+
+
+    
+
+    <div class="method-type">
+    <span class="method-type-signature is-static">static</span>
+    </div>
+
+    <h4 class="method-name" id=".warn">warn<span class="signature">(&hellip;args)</span><span class="return-type-signature"></span>
+    </h4>
+
+
+
+
+
+<div class="method-description">
+    
+    <p>Writes a &quot;warn&quot; severity log message.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Parameters</h4>
+    
+
+<ul class="method-params">
+    
+
+        <li>
+            
+                <span class="param-name">args</span>
+            
+
+            
+                
+
+
+    <span class="param-type">
+        <code>any</code>
+    </span>
+    
+
+            
+
+            
+                <span class="param-attributes">
+                
+
+                
+
+                
+                    &lt;repeatable&gt;<br>
+                
+                </span>
+            
+
+            
+
+            <div class="param-description"><p>The arguments with information to be logged.</p></div>
+            
+        </li>
+
+    
+</ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h4 class="method-heading">Source</h4>
+    <ul>
+        <li class="method-source">
+            <a href="log-middleware.js.html">log-middleware.js</a><a href="log-middleware.js.html#source.102">, line 102</a>
+        </li>
+    </ul>
+
+
+
+    </article>
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+  </div>
+</main>
+
+<footer class="layout-footer">
+  <div class="container">
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri May 27 2022 08:22:58 GMT-0700 (Pacific Daylight Time)
+  </div>
+</footer>
+
+
+
+<script src="scripts/prism.dev.js"></script>
+</body>
+</html>

@@ -1,7 +1,10 @@
 
 const SUPPORTED_SEVERITIES = ['debug', 'info', 'warn', 'error'];
 
-export default class LogUtility {
+/**
+ * @class
+ */
+class LogUtility {
 
     /**
      * Returns a ISO8601 timestamp as a string.
@@ -46,3 +49,5 @@ export default class LogUtility {
     }
 
 }
+
+export default LogUtility;

@@ -14,10 +14,9 @@ import LogUtility from './log-utility.js';
 /**
  * Outputs log messages to stdout (console).
  */
-export default class ConsoleLogger {
+class ConsoleLogger {
     constructor(config) {
 
-        
         Object.defineProperty(this, '_storedConfig', {
             value: {
                 enabled: true,
@@ -28,7 +27,7 @@ export default class ConsoleLogger {
             },
             writable: true,
             enumerable: false
-        })
+        });
         this.config = config;
     }
 
@@ -87,7 +86,7 @@ export default class ConsoleLogger {
             let prefix = `[${severity}]`.padEnd(8, ' ');
             if (this.config.colors) {
                 prefix = chalk`{${colors.bright} ${prefix}}`;
-            } 
+            }
             if (this.config.timestamp) {
                 if (this.config.colors) {
                     prefix += chalk`{${colors.regular} ${LogUtility.timestamp(!!this.config.local)}}`;
@@ -132,3 +131,5 @@ export default class ConsoleLogger {
     }
 
 }
+
+export default ConsoleLogger;

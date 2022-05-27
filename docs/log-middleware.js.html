@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>@AppKu/StashKu-Log: log-middleware.js</title>
+    
+    
+      <link type="text/css" rel="stylesheet" href="styles/vendor/prism-tomorrow-night.css">
+    
+    <link type="image/x-icon" rel="icon" href="favicon.ico">
+    <link type="image/x-icon" rel="shortcut icon" href="favicon.ico">
+    <link type="text/css" rel="stylesheet" href="styles/styles.css">
+    
+</head>
+<body>
+
+<header class="layout-header">
+  
+    <a href="./">
+      <img
+        src="https://avatars.githubusercontent.com/u/76977527?s=400"
+        alt="@AppKu/StashKu-Log"
+      >
+    </a>
+  
+  <h1><a href="./index.html">@AppKu/StashKu-Log</a></h1>
+  
+  <h2>v0.3.1</h2>
+  
+  
+  <ul class="meta-links">
+    
+    <li><a href="https://appku.com"><i class="bi bi-globe"></i></a></li>
+    
+    <li><a href="https://github.com/appku/stashku-log"><i class="bi bi-github"></i></a></li>
+    
+  </ul>
+  
+  <nav class="layout-nav">
+    <ul class="nav-introduction">
+      <li class="nav-item"><a href="./index.html">Introduction</a></li>
+    </ul>
+    <ul><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="ConsoleLogger.html">ConsoleLogger</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="ConsoleLogger.html#config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="ConsoleLogger.html#config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#debug">debug</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#info">info</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#warn">warn</a></span></li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="LogMiddleware.html">LogMiddleware</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.loggers">loggers</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.name">name</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.states">states</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.callback">callback</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.debug">debug</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.info">info</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.warn">warn</a></span></li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="LogUtility.html">LogUtility</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogUtility.html#.severity">severity</a></span></li></ul><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#ConsoleLoggerConfiguration">ConsoleLoggerConfiguration</a></span></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#LogMiddlewareConfiguration">LogMiddlewareConfiguration</a></span></li>
+  </nav>
+</header>
+
+
+<main class="layout-main  layout-content--source">
+  <div class="container">
+    <p class="page-kind">source</p>
+    <h1 class="page-title">log-middleware.js</h1>
+    
+
+
+
+    
+
+<section>
+    <article>
+        <pre id="source" class="source-page line-numbers"><code class="language-js">import StashKu, { BaseEngine } from '@appku/stashku';
+import ConsoleLogger from './console-logger.js';
+
+const SUPPORTED_SEVERITIES = ['debug', 'info', 'warn', 'error'];
+
+/**
+ * @typedef LogMiddlewareConfiguration
+ * @property {ConsoleLoggerConfiguration} console
+ * @property {FileLoggerConfiguration} file
+ */
+
+/**
+ * Middlware that provides logging capabilities.
+ * @class LogMiddleware
+ */
+const LogMiddleware = {
+    /**
+     * @type {String}
+     */
+    name: '@appku/stashku-log',
+
+    /** 
+     * @type {Array}
+     * @readonly
+     */
+    states: ['log'],
+
+    /**
+     * @type {LogMiddlewareConfiguration}
+     */
+    config: null,
+
+    /**
+     * @type {Array}
+     */
+    loggers: null,
+
+    /**
+     * Returns the loggers of the middleware, constructing the object if necessary (lazy-load).
+     * 
+     * We lazy load the loggers in case other initialization code is present to set environmental variables.
+     * @returns {Array}
+     * @private
+     */
+    getLoggers() {
+        if (!this.loggers) {
+            this.loggers = {
+                console: new ConsoleLogger()
+            };
+        }
+        return this.loggers;
+    },
+
+    /**
+     * The middleware callback handler that is called from StashKu.
+     * @param {StashKu} stashKu - The `StashKu` instance making the call.
+     * @param {BaseEngine} engine - The currently active storage engine.
+     * @param {String} severity - The severity of the log call, either "debug", "info", "warn", or "error".
+     * @param {Array} args - The arguments containing information to log.
+     */
+    async callback(stashKu, engine, severity, args) {
+        //ensure configuration is set from StashKu, and each logger is configured.
+        if (stashKu.config['@appku/stashku-log']) {
+            this.config = stashKu.config['@appku/stashku-log'];
+            let loggers = this.getLoggers();
+            for (let key in loggers) {
+                loggers[key].config = Object.assign(loggers[key].config, this.config[key]);
+            }
+        }
+        //make the appropriate call.
+        if (SUPPORTED_SEVERITIES.indexOf(severity) >= 0) {
+            this[severity](...args);
+        }
+    },
+
+    /**
+     * Writes a "debug" severity log message.
+     * @param  {...any} args - The arguments with information to be logged.
+     */
+    async debug(...args) {
+        let loggers = this.getLoggers();
+        for (let key in loggers) {
+            loggers[key].debug(...args);
+        }
+    },
+
+    /**
+     * Writes a "info" severity log message.
+     * @param  {...any} args - The arguments with information to be logged.
+     */
+    async info(...args) {
+        let loggers = this.getLoggers();
+        for (let key in loggers) {
+            loggers[key].info(...args);
+        }
+    },
+
+    /**
+     * Writes a "warn" severity log message.
+     * @param  {...any} args - The arguments with information to be logged.
+     */
+    async warn(...args) {
+        let loggers = this.getLoggers();
+        for (let key in loggers) {
+            loggers[key].warn(...args);
+        }
+    },
+
+    /**
+     * Writes a "error" severity log message.
+     * @param  {...any} args - The arguments with information to be logged.
+     */
+    async error(...args) {
+        let loggers = this.getLoggers();
+        for (let key in loggers) {
+            loggers[key].error(...args);
+        }
+    }
+};
+
+export default LogMiddleware;</code></pre>
+    </article>
+</section>
+
+
+
+
+  </div>
+</main>
+
+<footer class="layout-footer">
+  <div class="container">
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri May 27 2022 08:22:58 GMT-0700 (Pacific Daylight Time)
+  </div>
+</footer>
+
+
+
+<script src="scripts/prism.dev.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>@AppKu/StashKu-Log: log-utility.js</title>
+    
+    
+      <link type="text/css" rel="stylesheet" href="styles/vendor/prism-tomorrow-night.css">
+    
+    <link type="image/x-icon" rel="icon" href="favicon.ico">
+    <link type="image/x-icon" rel="shortcut icon" href="favicon.ico">
+    <link type="text/css" rel="stylesheet" href="styles/styles.css">
+    
+</head>
+<body>
+
+<header class="layout-header">
+  
+    <a href="./">
+      <img
+        src="https://avatars.githubusercontent.com/u/76977527?s=400"
+        alt="@AppKu/StashKu-Log"
+      >
+    </a>
+  
+  <h1><a href="./index.html">@AppKu/StashKu-Log</a></h1>
+  
+  <h2>v0.3.1</h2>
+  
+  
+  <ul class="meta-links">
+    
+    <li><a href="https://appku.com"><i class="bi bi-globe"></i></a></li>
+    
+    <li><a href="https://github.com/appku/stashku-log"><i class="bi bi-github"></i></a></li>
+    
+  </ul>
+  
+  <nav class="layout-nav">
+    <ul class="nav-introduction">
+      <li class="nav-item"><a href="./index.html">Introduction</a></li>
+    </ul>
+    <ul><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="ConsoleLogger.html">ConsoleLogger</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="ConsoleLogger.html#config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="ConsoleLogger.html#config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#debug">debug</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#info">info</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#warn">warn</a></span></li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="LogMiddleware.html">LogMiddleware</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.loggers">loggers</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.name">name</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.states">states</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.callback">callback</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.debug">debug</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.info">info</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.warn">warn</a></span></li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="LogUtility.html">LogUtility</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogUtility.html#.severity">severity</a></span></li></ul><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#ConsoleLoggerConfiguration">ConsoleLoggerConfiguration</a></span></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#LogMiddlewareConfiguration">LogMiddlewareConfiguration</a></span></li>
+  </nav>
+</header>
+
+
+<main class="layout-main  layout-content--source">
+  <div class="container">
+    <p class="page-kind">source</p>
+    <h1 class="page-title">log-utility.js</h1>
+    
+
+
+
+    
+
+<section>
+    <article>
+        <pre id="source" class="source-page line-numbers"><code class="language-js">
+const SUPPORTED_SEVERITIES = ['debug', 'info', 'warn', 'error'];
+
+/**
+ * @class
+ */
+class LogUtility {
+
+    /**
+     * Returns a ISO8601 timestamp as a string.
+     * @param {Boolean} [local] - If `true`, output a local timestamp, instead of UTC.
+     * @returns {String}
+     * @private
+     */
+    static timestamp(local) {
+        let ts = new Date();
+        if (local) {
+            let tzo = ts.getTimezoneOffset() * -1;
+            return ts.getFullYear()
+                + '-' + (ts.getMonth() + 1).toString().padStart(2, '0')
+                + '-' + (ts.getDate()).toString().padStart(2, '0')
+                + 'T' + (ts.getHours()).toString().padStart(2, '0')
+                + ':' + (ts.getMinutes()).toString().padStart(2, '0')
+                + ':' + (ts.getSeconds()).toString().padStart(2, '0')
+                + '.' + String((ts.getMilliseconds() / 1000).toFixed(3)).slice(2, 5)
+                + (tzo &lt; 0 ? '-' : '+')
+                + (Math.abs(tzo) / 60).toFixed(0).padStart(2, '0') + ':'
+                + (Math.abs(tzo) % 60).toString().padStart(2, '0');
+        } else {
+            return ts.getUTCFullYear()
+                + '-' + (ts.getUTCMonth() + 1).toString().padStart(2, '0')
+                + '-' + (ts.getUTCDate()).toString().padStart(2, '0')
+                + 'T' + (ts.getUTCHours()).toString().padStart(2, '0')
+                + ':' + (ts.getUTCMinutes()).toString().padStart(2, '0')
+                + ':' + (ts.getUTCSeconds()).toString().padStart(2, '0')
+                + '.' + String((ts.getUTCMilliseconds() / 1000).toFixed(3)).slice(2, 5)
+                + 'Z';
+        }
+    }
+
+    /**
+     * Converts a severity (name) to a sortable number indicating the index in order of importance with all
+     * severities.
+     * @param {String} severity - The severity name.
+     * @returns {Number}
+     */
+    static severity(severity) {
+        return SUPPORTED_SEVERITIES.indexOf(severity);
+    }
+
+}
+
+export default LogUtility;</code></pre>
+    </article>
+</section>
+
+
+
+
+  </div>
+</main>
+
+<footer class="layout-footer">
+  <div class="container">
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri May 27 2022 08:22:58 GMT-0700 (Pacific Daylight Time)
+  </div>
+</footer>
+
+
+
+<script src="scripts/prism.dev.js"></script>
+</body>
+</html>

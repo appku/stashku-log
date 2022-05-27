@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>@AppKu/StashKu-Log</title>
+    
+    
+      <link type="text/css" rel="stylesheet" href="styles/vendor/prism-tomorrow-night.css">
+    
+    <link type="image/x-icon" rel="icon" href="favicon.ico">
+    <link type="image/x-icon" rel="shortcut icon" href="favicon.ico">
+    <link type="text/css" rel="stylesheet" href="styles/styles.css">
+    
+</head>
+<body>
+
+<header class="layout-header">
+  
+    <a href="./">
+      <img
+        src="https://avatars.githubusercontent.com/u/76977527?s=400"
+        alt="@AppKu/StashKu-Log"
+      >
+    </a>
+  
+  <h1><a href="./index.html">@AppKu/StashKu-Log</a></h1>
+  
+  <h2>v0.3.1</h2>
+  
+  
+  <ul class="meta-links">
+    
+    <li><a href="https://appku.com"><i class="bi bi-globe"></i></a></li>
+    
+    <li><a href="https://github.com/appku/stashku-log"><i class="bi bi-github"></i></a></li>
+    
+  </ul>
+  
+  <nav class="layout-nav">
+    <ul class="nav-introduction">
+      <li class="nav-item"><a href="./index.html">Introduction</a></li>
+    </ul>
+    <ul><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="ConsoleLogger.html">ConsoleLogger</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="ConsoleLogger.html#config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="ConsoleLogger.html#config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#debug">debug</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#info">info</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#warn">warn</a></span></li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="LogMiddleware.html">LogMiddleware</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.loggers">loggers</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.name">name</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.states">states</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.callback">callback</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.debug">debug</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.info">info</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.warn">warn</a></span></li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="LogUtility.html">LogUtility</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogUtility.html#.severity">severity</a></span></li></ul><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#ConsoleLoggerConfiguration">ConsoleLoggerConfiguration</a></span></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#LogMiddlewareConfiguration">LogMiddlewareConfiguration</a></span></li>
+  </nav>
+</header>
+
+
+<main class="layout-main ">
+  <div class="container">
+    <p class="page-kind"></p>
+    <h1 class="page-title"></h1>
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+    
+
+    <section class="readme">
+        <article><h1>StashKu Log Middleware</h1>
+<p>This StashKu middleware project provides logging to console and/or to a rolling file directory. It provides support for
+the various severities of StashKu logging: <code>error</code>, <code>warn</code>, <code>info</code>, and <code>debug</code>.</p>
+<p>StashKu Log can also be used independently, without StashKu to simply log in a standardized way that enforces severity
+level logging (no <code>console.log</code> generalities).</p>
+<p>This package supports 2 modes of logging, each can be enabled/disabled and configured independently of one another:</p>
+<ul>
+<li><code>&quot;console&quot;</code>: Outputs logs to <code>stdout</code> (usually to the terminal). This logger is enabled by default.</li>
+<li><code>&quot;file&quot;</code>: Writes logs to a log file on a file-system. <em>Currently under development.</em></li>
+</ul>
+<h2>Getting Started</h2>
+<pre class="prettyprint source lang-sh"><code>npm i --save @appku/stashku-log
+</code></pre>
+<p>To utilize this middleware with <code>stashku</code>, this middleware can be passed to StashKu through the configuration to provide functionality.</p>
+<pre class="prettyprint source lang-js"><code>import log from '@appku/stashku-log';
+let stash = new StashKu({
+    middleware: [log],
+    '@appku/stashku-log': {
+        console: {
+            enabled: true,
+            severity: 'info',
+            colors: true,
+            timestamp: true,
+            local: true
+        },
+        file: {
+            enabled: false
+            path: './'
+        }
+    }
+});
+</code></pre>
+<h3>Code Quick-Start</h3>
+<p>You should utilize your StashKu instance's <code>log</code> property to make logs function calls. In the absence of StashKu, you can make log calls directly with this library:</p>
+<h4>Within StashKu</h4>
+<pre class="prettyprint source lang-js"><code>let stash = new StashKu( ... ); ///see Configuration section below
+stash.log.debug('Look ma! I am debugging.');
+stash.log.info('Look ma! I am pretty.');
+stash.log.warn('Look ma! I am smoking.');
+stash.log.error('Look ma! I am on fire.');
+</code></pre>
+<h4>Without StashKu</h4>
+<pre class="prettyprint source lang-js"><code>import log from '@appku/stashku-log';
+log.debug('Look ma! I am debugging.');
+log.info('Look ma! I am pretty.');
+log.warn('Look ma! I am smoking.');
+log.error('Look ma! I am on fire.');
+</code></pre>
+<h4>Loading After StashKu Initialization</h4>
+<p>Alternatively, if not loaded by configuration of the StashKu <code>middleware</code> property (as shown above), you can use
+StashKu's <code>use</code> middleware function:</p>
+<pre class="prettyprint source lang-js"><code>import log from '@appku/stashku-log';
+myStashKuInst.use(log);
+...
+</code></pre>
+<h4>Without StashKu</h4>
+<p>If you are using the stashku-log without StashKu, you can still configure the module, as shown below:</p>
+<pre class="prettyprint source lang-js"><code>import log from '@appku/stashku-log';
+//set the configuration object on the module directly
+log.config = { 
+    console: { ... }, 
+    file: { ... }
+}
+...
+</code></pre>
+<p>To configure the library <em>without</em> StashKu, set the <code>config</code> property on the module or use environmental variables.</p>
+<h2>Documentation</h2>
+<p>Formal documentation is <a href="https://github.com/appku/stashku-log">available here</a>.</p>
+<h3>Available Configuration Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>ENV</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>console</td>
+<td></td>
+<td><code>Object</code></td>
+<td></td>
+</tr>
+<tr>
+<td>↳ console.enabled</td>
+<td>STASHKU_LOG_CONSOLE_ENABLED</td>
+<td><code>Boolean</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>↳ console.severity</td>
+<td>STASHKU_LOG_CONSOLE_SEVERITY</td>
+<td><code>String</code></td>
+<td></td>
+</tr>
+<tr>
+<td>↳ console.timestamp</td>
+<td>STASHKU_LOG_CONSOLE_TIMESTAMP</td>
+<td><code>Boolean</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>↳ console.local</td>
+<td>STASHKU_LOG_CONSOLE_LOCAL</td>
+<td><code>Boolean</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>↳ console.colors</td>
+<td>STASHKU_LOG_CONSOLE_COLORS</td>
+<td><code>Boolean</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>file</td>
+<td></td>
+<td><code>Object</code></td>
+<td></td>
+</tr>
+<tr>
+<td>↳ file.enabled</td>
+<td>STASHKU_LOG_FILE_ENABLED</td>
+<td><code>Boolean</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<p>You can utilize environmental variables or define the values through a configuration object passed to StashKu.
+This project also loads <code>.env</code> files in it's package directory.</p>
+<h1>Running</h1>
+<p>Run <code>npm start</code></p>
+<h1>Building</h1>
+<p>This project uses node.js to run and does not have an explicit build process.</p>
+<h2>Code Documentation</h2>
+<p>You can generate a static JSDoc site under the <code>docs/</code> path using the command <code>npm run docs</code>.</p>
+<h1>Testing</h1>
+<p>This project uses <code>jest</code> to perform unit tests.</p>
+<h2>Running Tests</h2>
+<p>Run <code>npm test</code> to run jest unit tests.</p>
+<p>Run <code>npm run lint</code> to run ESLint, optionally install the Visual Studio Code ESLint extension to have linting issues show in your &quot;Problems&quot; tab and be highlighted.</p>
+<p>If you are writing unit tests, you may need to <code>npm install @types/jest</code> to get intellisense in Visual Studio Code if for some reason it did not get installed.</p>
+<h1>Publishing</h1>
+<p>Only maintainers with proper access can publish this package to npm. To do so as maintainers, you can publish by running the following command:</p>
+<pre class="prettyprint source lang-sh"><code>npm publish --registry=https://registry.npmjs.org --access=public
+</code></pre></article>
+    </section>
+
+
+
+
+
+
+  </div>
+</main>
+
+<footer class="layout-footer">
+  <div class="container">
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri May 27 2022 08:22:58 GMT-0700 (Pacific Daylight Time)
+  </div>
+</footer>
+
+
+
+<script src="scripts/prism.dev.js"></script>
+</body>
+</html>

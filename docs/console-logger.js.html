@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>@AppKu/StashKu-Log: console-logger.js</title>
+    
+    
+      <link type="text/css" rel="stylesheet" href="styles/vendor/prism-tomorrow-night.css">
+    
+    <link type="image/x-icon" rel="icon" href="favicon.ico">
+    <link type="image/x-icon" rel="shortcut icon" href="favicon.ico">
+    <link type="text/css" rel="stylesheet" href="styles/styles.css">
+    
+</head>
+<body>
+
+<header class="layout-header">
+  
+    <a href="./">
+      <img
+        src="https://avatars.githubusercontent.com/u/76977527?s=400"
+        alt="@AppKu/StashKu-Log"
+      >
+    </a>
+  
+  <h1><a href="./index.html">@AppKu/StashKu-Log</a></h1>
+  
+  <h2>v0.3.1</h2>
+  
+  
+  <ul class="meta-links">
+    
+    <li><a href="https://appku.com"><i class="bi bi-globe"></i></a></li>
+    
+    <li><a href="https://github.com/appku/stashku-log"><i class="bi bi-github"></i></a></li>
+    
+  </ul>
+  
+  <nav class="layout-nav">
+    <ul class="nav-introduction">
+      <li class="nav-item"><a href="./index.html">Introduction</a></li>
+    </ul>
+    <ul><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="ConsoleLogger.html">ConsoleLogger</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="ConsoleLogger.html#config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="ConsoleLogger.html#config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#debug">debug</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#info">info</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="ConsoleLogger.html#warn">warn</a></span></li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="LogMiddleware.html">LogMiddleware</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.config">config</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.loggers">loggers</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.name">name</a></span></li><li class="nav-item"><span class="nav-item-type type-member" title="member">M</span><span class="nav-item-name is-member"><a href="LogMiddleware.html#.states">states</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.callback">callback</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.debug">debug</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.error">error</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.info">info</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogMiddleware.html#.warn">warn</a></span></li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="LogUtility.html">LogUtility</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="LogUtility.html#.severity">severity</a></span></li></ul><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#ConsoleLoggerConfiguration">ConsoleLoggerConfiguration</a></span></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#LogMiddlewareConfiguration">LogMiddlewareConfiguration</a></span></li>
+  </nav>
+</header>
+
+
+<main class="layout-main  layout-content--source">
+  <div class="container">
+    <p class="page-kind">source</p>
+    <h1 class="page-title">console-logger.js</h1>
+    
+
+
+
+    
+
+<section>
+    <article>
+        <pre id="source" class="source-page line-numbers"><code class="language-js">/* eslint-disable no-console */
+import chalk from 'chalk';
+import LogUtility from './log-utility.js';
+
+/**
+ * @typedef ConsoleLoggerConfiguration
+ * @property {Boolean} enabled
+ * @property {String} severity
+ * @property {Boolean} timestamp
+ * @property {Boolean} local
+ * @property {Boolean} colors
+ */
+
+/**
+ * Outputs log messages to stdout (console).
+ */
+class ConsoleLogger {
+    constructor(config) {
+
+        Object.defineProperty(this, '_storedConfig', {
+            value: {
+                enabled: true,
+                severity: 'error',
+                colors: true,
+                timestamp: true,
+                local: true
+            },
+            writable: true,
+            enumerable: false
+        });
+        this.config = config;
+    }
+
+    /**
+     * @type {ConsoleLoggerConfiguration}
+     */
+    get config() {
+        let effective = {};
+        if (typeof process.env.STASHKU_LOG_CONSOLE_ENABLED !== 'undefined') {
+            effective.enabled = !!process.env.STASHKU_LOG_CONSOLE_ENABLED;
+        }
+        if (typeof process.env.STASHKU_LOG_CONSOLE_SEVERITY !== 'undefined') {
+            effective.severity = process.env.STASHKU_LOG_CONSOLE_SEVERITY;
+        }
+        if (typeof process.env.STASHKU_LOG_CONSOLE_TIMESTAMP !== 'undefined') {
+            effective.timestamp = !!process.env.STASHKU_LOG_CONSOLE_TIMESTAMP;
+        }
+        if (typeof process.env.STASHKU_LOG_CONSOLE_LOCAL !== 'undefined') {
+            effective.local = !!process.env.STASHKU_LOG_CONSOLE_LOCAL;
+        }
+        if (typeof process.env.STASHKU_LOG_CONSOLE_COLORS !== 'undefined') {
+            effective.colors = !!process.env.STASHKU_LOG_CONSOLE_COLORS;
+        }
+        return Object.assign(this._storedConfig, effective);
+    }
+
+    /**
+     * @param {ConsoleLoggerConfiguration} obj
+     */
+    set config(obj) {
+        this._storedConfig = Object.assign(this._storedConfig, obj);
+    }
+
+    async write(severity, ...args) {
+        if (this.config &amp;&amp; this.config.enabled) {
+            if (this.config.severity) {
+                //only log if severity at or above configured minimum.
+                if (LogUtility.severity(severity) &lt; LogUtility.severity(this.config.severity)) {
+                    return;
+                }
+            }
+            let colors = {
+                bright: 'greenBright',
+                regular: 'green'
+            };
+            if (severity === 'info') {
+                colors.bright = 'whiteBright';
+                colors.regular = 'white';
+            } else if (severity === 'warn') {
+                colors.bright = 'yellowBright';
+                colors.regular = 'yellow';
+            } else if (severity === 'error') {
+                colors.bright = 'redBright';
+                colors.regular = 'red';
+            }
+            let prefix = `[${severity}]`.padEnd(8, ' ');
+            if (this.config.colors) {
+                prefix = chalk`{${colors.bright} ${prefix}}`;
+            }
+            if (this.config.timestamp) {
+                if (this.config.colors) {
+                    prefix += chalk`{${colors.regular} ${LogUtility.timestamp(!!this.config.local)}}`;
+                } else {
+                    prefix += `${LogUtility.timestamp(!!this.config.local)}`;
+                }
+            }
+            console[severity](prefix, ...args);
+        }
+    }
+
+    /**
+     * Writes a debug-severity log message. This is the lowest severity.
+     * @param  {...any} args - Any object values to be logged.
+     */
+    async debug(...args) {
+        this.write('debug', ...args);
+    }
+
+    /**
+     * Writes an information-severity log message. This is the second-to-lowest severity.
+     * @param  {...any} args - Any object values to be logged.
+     */
+    async info(...args) {
+        this.write('info', ...args);
+    }
+
+    /**
+     * Writes a warning-severity log message. This is the second-to-highest severity.
+     * @param  {...any} args - Any object values to be logged.
+     */
+    async warn(...args) {
+        this.write('warn', ...args);
+    }
+
+    /**
+     * Writes a error-severity log message. This is the highest severity.
+     * @param  {...any} args - Any object values to be logged.
+     */
+    async error(...args) {
+        this.write('error', ...args);
+    }
+
+}
+
+export default ConsoleLogger;</code></pre>
+    </article>
+</section>
+
+
+
+
+  </div>
+</main>
+
+<footer class="layout-footer">
+  <div class="container">
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri May 27 2022 08:22:58 GMT-0700 (Pacific Daylight Time)
+  </div>
+</footer>
+
+
+
+<script src="scripts/prism.dev.js"></script>
+</body>
+</html>

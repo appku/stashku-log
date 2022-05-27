@@ -10,8 +10,8 @@ const SUPPORTED_SEVERITIES = ['debug', 'info', 'warn', 'error'];
  */
 
 /**
- * @module
  * Middlware that provides logging capabilities.
+ * @class LogMiddleware
  */
 const LogMiddleware = {
     /**
