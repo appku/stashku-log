@@ -1,3 +1,8 @@
+
+[![NPM](https://img.shields.io/npm/v/@appku/stashku-log)](https://npmjs.org/package/@appku/stashku-log)
+[![License](https://img.shields.io/npm/l/@appku/stashku-log)](https://npmjs.org/package/@appku/stashku-log)
+[![Downloads](https://img.shields.io/npm/dt/@appku/stashku-log)](https://npmjs.org/package/@appku/stashku-log)
+
 # StashKu Log Middleware
 This StashKu middleware project provides logging to console and/or to a rolling file directory. It provides support for
 the various severities of StashKu logging: `error`, `warn`, `info`, and `debug`.
